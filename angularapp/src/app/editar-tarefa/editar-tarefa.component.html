@@ -1,0 +1,46 @@
+<div class="row">
+  <div class="col-md-10 offset-1">
+    <h3 class="text-dark">{{ isEdicao ? 'Editar Tarefa' : 'Criar Tarefa' }}</h3>
+  </div>
+</div>
+
+<form (ngSubmit)="salvarTarefa()">
+  <div class="row">
+    <div class="col-md-10 offset-1">
+      <div class="form-group">
+        <label class="text-dark" for="descricao">Descrição</label>
+        <textarea class="form-control" id="descricao" [(ngModel)]="tarefa.descricao" name="descricao"></textarea>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-10 offset-1">
+      <div class="form-group">
+        <label class="text-dark" for="data">Data</label>
+        <input type="date" class="form-control" id="data" [(ngModel)]="tarefa.data" name="data" />
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-10 offset-1">
+      <div class="form-group">
+        <label *ngIf="isEdicao" class="text-dark" for="status">Status</label>
+        <select *ngIf="isEdicao" class="form-control form-select" id="status" [(ngModel)]="tarefa.status" name="status">
+          <option value="0">Não Iniciada</option>
+          <option value="1">Em Andamento</option>
+          <option value="2">Concluída</option>
+          <option value="3">Cancelada</option>
+        </select>
+        <input *ngIf="!isEdicao" type="hidden" id="status" name="status" [(ngModel)]="tarefa.status" />
+        <input type="hidden" id="uuid" name="uuid" [(ngModel)]="tarefa.uuid" />
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-10 offset-1">
+      <button type="submit" class="btn btn-primary">Salvar</button>
+      <button (click)="cancelar()" class="btn btn-secondary">Cancelar</button>
+      <button *ngIf="isEdicao" (click)="excluirTarefa()" class="btn btn-danger">Excluir Tarefa</button>
+    </div>
+  </div>
+</form>

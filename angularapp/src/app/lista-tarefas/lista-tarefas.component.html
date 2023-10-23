@@ -1,0 +1,55 @@
+<div class="row">
+  <div class="col-md-10 offset-1"><h3 class="text-dark">Lista de Tarefas</h3></div>
+</div>
+
+<!-- Botão para abrir o componente editar-tarefa em modo de inclusão -->
+<div class="row">
+  <div class="col-md-10 offset-1">
+    <div class="d-flex">
+      <button class="btn btn-dark" (click)="abrirEdicao(0)">Incluir Tarefa</button>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-10 offset-1">
+
+    <table *ngIf="!cargaInicial" class="table table-hover text-dark">
+      <tbody>
+        <tr>
+          <td>
+            Carregando...
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <table *ngIf="cargaInicial && tarefas.length === 0" class="table table-hover text-dark">
+      <tbody>
+        <tr>
+          <td>
+            Nenhuma tarefa cadastrada ainda :(
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <table *ngIf="tarefas.length > 0" class="table table-hover text-dark">
+      <thead>
+        <tr>
+          <th>Data</th>
+          <th>Descrição</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let t of tarefas" class="tarefa type-{{ t.status }}" (click)="abrirEdicao(t.id)">
+          <td>{{ transformaData(t.data) }}</td>
+          <td>{{ t.descricao }}</td>
+          <td>{{ Statuses[+t.status] }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+</div>
