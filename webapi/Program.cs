@@ -13,7 +13,7 @@ internal class Program
         builder.Services.AddDbContext<TarefaContext>();
         builder.Services.AddScoped<TarefaRepository>();
         builder.Services.AddCors();
-        RabbitMQStart.ConfigureServices(builder.Services);
+        // RabbitMQStart.ConfigureServices(builder.Services);
         builder.Services.AddControllers();
 
         builder.Services.AddEndpointsApiExplorer();
