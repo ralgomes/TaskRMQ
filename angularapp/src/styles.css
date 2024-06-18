@@ -1,5 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~bootstrap/dist/css/bootstrap.min.css";
+@import '~bootstrap-icons/font/bootstrap-icons.css';
 .bg-light { color: #f8f9fa !important }
 .btn {
   margin-left: 10px;
@@ -44,4 +45,10 @@
 }
 .pad10 {
     padding-bottom:10px;
+}
+th {
+  cursor: pointer;
+}
+tr {
+  cursor: pointer;
 }

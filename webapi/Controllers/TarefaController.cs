@@ -9,10 +9,10 @@
     [Route("api/tarefas")]
     public class TarefaController : ControllerBase
     {
-        private readonly TarefaRepository _tarefaRepository;
+        private readonly ITarefaRepository _tarefaRepository; // Use the interface here
         private readonly ILogger<TarefaController> _logger;
 
-        public TarefaController(TarefaRepository tarefaRepository, ILogger<TarefaController> logger)
+        public TarefaController(ITarefaRepository tarefaRepository, ILogger<TarefaController> logger)
         {
             _tarefaRepository = tarefaRepository;
             _logger = logger;

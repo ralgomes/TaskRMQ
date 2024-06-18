@@ -11,7 +11,7 @@ internal class Program
         var builder = WebApplication.CreateBuilder(args);
 
         builder.Services.AddDbContext<TarefaContext>();
-        builder.Services.AddScoped<TarefaRepository>();
+        builder.Services.AddScoped<ITarefaRepository, TarefaRepository>();
         builder.Services.AddCors();
         // RabbitMQStart.ConfigureServices(builder.Services);
         builder.Services.AddControllers();

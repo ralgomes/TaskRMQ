@@ -13,7 +13,7 @@ import { Tarefa } from '../modelo/Tarefa';
 export class EditarTarefaComponent implements OnInit {
   tarefa:Tarefa = {
     id: 0,
-    uuid: this.generateUUID(),
+    uuid: '',
     data: '',
     descricao: '',
     status: 0
@@ -27,14 +27,6 @@ export class EditarTarefaComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router
   ) { }
-
-  generateUUID() {
-    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
-      const r = (Math.random() * 16) | 0;
-      const v = c === 'x' ? r : (r & 0x3) | 0x8;
-      return v.toString(16);
-    });
-  }
 
   ngOnInit() {
     this.route.paramMap.subscribe((params) => {

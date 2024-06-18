@@ -5,7 +5,7 @@
     using Microsoft.EntityFrameworkCore;
     using System.Linq;
 
-    public class TarefaRepository
+    public class TarefaRepository : ITarefaRepository
     {
         private readonly TarefaContext _context;
 
@@ -18,16 +18,20 @@
         {
             return _context.Tarefas.FirstOrDefault(t => t.Id == id);
         }
-
+        public Tarefa ObterPorUUID(string uuid)
+        {
+            return _context.Tarefas.FirstOrDefault(t => t.UUID == uuid);
+        }
         public IEnumerable<Tarefa> ObterTodas()
         {
             return _context.Tarefas.ToList();
         }
-
-        public void Adicionar(Tarefa tarefa)
+        public Tarefa Adicionar(Tarefa tarefa)
         {
+            tarefa.UUID = Guid.NewGuid().ToString();
             _context.Tarefas.Add(tarefa);
             _context.SaveChanges();
+            return tarefa;
         }
 
         public void Atualizar(Tarefa tarefa)
